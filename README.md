@@ -1,6 +1,10 @@
 # Lab 29 Alpha
 This will be the alpha release branch
 
+3. Development: where the actual coding takes place. This phase is often the longest, as it involves not just coding but also unit testing to ensure that individual parts of the software work correctly.
+
+4. Testing: the software is rigorously tested to identify and fix any bugs or issues. Various tests are conducted: system testing, integration testing, and user acceptance testing), to ensure the software meets all requirements and functions as intended.
+
 ## Requirements Analysis
 Suppose the project's stakeholders have met, and determined the following set of requirements for this software release:
 
