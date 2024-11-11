@@ -42,9 +42,11 @@ using namespace std;
 
 bool testPrintTime()
 {
-    time_t time = 1620000000;
-    string expected = "2021-05-03 16:53:20";
-    string result = printTime(time);
+    // https://www.epochconverter.com/
+    time_t time = 0;
+    string expected = "1969-12-31 16:00:00"; // Pacific time
+    string result = printTime(time, "%Y-%m-%d %H:%M:%S");
+    cout << "Expected: " << expected << " Got: " << result << endl;
     return expected == result;
 }
 
@@ -62,7 +64,7 @@ bool testEnvironmentReadingParserReads()
     // echo the first 5 readings
     for (int i = 0; i < 5; i++)
     {
-        cout << "Reading " << i << ": " << historicalData[i].temperature << "°K, " << historicalData[i].uvi << " UVI" << endl;
+        cout << "Reading " << i << ": " << historicalData[i].temperature << "°K, " << historicalData[i].uvi << " UVI" << historicalData[i].time << " time "<< endl;
     }
 
     return historicalData.size() > 0;
@@ -106,14 +108,26 @@ int main()
 
     // Test the printTime function
     cout << "Test printTime: " << (testPrintTime() ? "PASSED" : "FAILED") << endl;
-
-
+    cout << "Test EnvironmentReadingParser Opens: " << (testEnvironmentReadingParserOpens() ? "PASSED" : "FAILED") << endl;
+    cout << "Test EnvironmentReadingParser Reads: " << endl << (testEnvironmentReadingParserReads() ? "PASSED" : "FAILED") << endl;
+    cout << endl;
+    cout << endl;
+    cout << "Running Simulation..." << endl;
     // Get a new array of EnvironmentReading structs
     // Test file should be in the repo under the src directory.
     vector<EnvironmentReading> historicalData;
 
     // I will use a `std::map` of `std::array` to store the 3 datapoints, as well as the timestamp:
-    map<time_t, array<double, 3>> readings;
+    // This should look like:
+    /*
+     day [
+     time [
+        soilMoisture,
+        battery
+        temperature
+    ],
+*/
+    map<string, map<time_t, array<double, 3>>> readings;
 
     // Read the file. The API is not working, my key hasn't been activated yet so I tried generating some test data with chatgpt.
     int success = EnvironmentReadingParser::parseWeatherData("../all_weather_data.json", historicalData);
@@ -128,14 +142,30 @@ int main()
     {
         for (const auto &reading : historicalData)
         {
-            // Simulate the soil moisture
-            double soilMoisture = simulateSoilMoisture(reading.uvi, reading.temperature);
-
+            // Create a new array for the data
+            array<double, 3> data;
             // Simulate the battery charge
-            double battery = simulateBatteryCharge(reading.uvi, reading.time);
-
-            // Push the data to the map
-            readings[reading.time] = {reading.temperature, soilMoisture, battery};
+            data[0] = simulateBatteryCharge(reading.uvi, reading.time);
+            // Simulate the soil moisture
+            data[1] = simulateSoilMoisture(reading.uvi, reading.temperature);
+            // Add the temperature
+            data[2] = reading.temperature;
+            // Add the data to the map
+            readings[reading.day][reading.time] = data;
         }
+    }
+    // Print the data
+    for (const auto &reading : readings)
+    {
+        cout << "Day: " << reading.first << endl;
+        for (const auto &time : reading.second)
+        {
+            cout << "Time: " << printTime(time.first) << endl;
+            cout << "Soil Moisture: " << time.second[0] << "%" << endl;
+            cout << "Battery: " << time.second[1] << "%" << endl;
+            cout << "Temperature: " << time.second[2] << "°K" << endl;
+            cout << endl;
+        }
+        cout << endl;
     }
 }
