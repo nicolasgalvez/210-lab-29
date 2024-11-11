@@ -1,6 +1,6 @@
 /**
  * Title: Lab 29: Alpha release
- * Description: I keep getting zero for everything unless I add a delay manually. I think it's the curse of the m2 mac.
+ * Description: 
  * Author: Nick Galvez
  * Class: COMSC-210
  *
