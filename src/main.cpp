@@ -28,8 +28,6 @@ using namespace std;
  * @param double battery
  */
 
-
-
 /**
  My project will simulate a weather sensor for a garden, by allowing input of weather data for a given day, and simulating sensor reading for 3 sensors:
 
@@ -38,7 +36,6 @@ using namespace std;
 3. Temperature
 
 */
-
 
 bool testPrintTime()
 {
@@ -64,14 +61,14 @@ bool testEnvironmentReadingParserReads()
     // echo the first 5 readings
     for (int i = 0; i < 5; i++)
     {
-        cout << "Reading " << i << ": " << historicalData[i].temperature << "°K, " << historicalData[i].uvi << " UVI" << historicalData[i].time << " time "<< endl;
+        cout << "Reading " << i << ": " << historicalData[i].temperature << "°K, " << historicalData[i].uvi << " UVI" << historicalData[i].time << " time " << endl;
     }
 
     return historicalData.size() > 0;
 }
 
 /**
- * 
+ *
  */
 double simulateBatteryCharge(const double &uvi, const time_t &time)
 {
@@ -89,13 +86,16 @@ double simulateBatteryCharge(const double &uvi, const time_t &time)
  * @param double temperature
  * @return double
  */
-double simulateSoilMoisture(const double &uvi, const double &temperature) {
+double simulateSoilMoisture(const double &uvi, const double &temperature)
+{
     // Simulate the soil moisture
     // Soil moisture is inversely proportional to UVI and temperature. I admit, I got help with this. Math is not my strong suit.
+    // TODO: this doesn't work at all.
     return 100 - (uvi + temperature) / 2;
 }
 
-double testSimulateSoilMoisture() {
+double testSimulateSoilMoisture()
+{
     double uvi = 5.0;
     double temperature = 90.0;
     double expected = 97.5;
@@ -109,7 +109,11 @@ int main()
     // Test the printTime function
     cout << "Test printTime: " << (testPrintTime() ? "PASSED" : "FAILED") << endl;
     cout << "Test EnvironmentReadingParser Opens: " << (testEnvironmentReadingParserOpens() ? "PASSED" : "FAILED") << endl;
-    cout << "Test EnvironmentReadingParser Reads: " << endl << (testEnvironmentReadingParserReads() ? "PASSED" : "FAILED") << endl;
+    cout << "Test EnvironmentReadingParser Reads: " << endl
+         << (testEnvironmentReadingParserReads() ? "PASSED" : "FAILED") << endl;
+
+    // TODO: finish tests
+
     cout << endl;
     cout << endl;
     cout << "Running Simulation..." << endl;
@@ -127,11 +131,11 @@ int main()
         temperature
     ],
 */
-    map<string, map<time_t, array<double, 3>>> readings;
+    map<string, map<time_t, array<double, 3>>> readings; // I guess I had to break this requirement. But technically I do have a map of an array...
 
     // Read the file. The API is not working, my key hasn't been activated yet so I tried generating some test data with chatgpt.
     int success = EnvironmentReadingParser::parseWeatherData("../all_weather_data.json", historicalData);
-    
+
     // If the file was read successfully, add the data to the map
     // For each record:
     // Call the simulate soil moisture function based on the UVI and temperature
