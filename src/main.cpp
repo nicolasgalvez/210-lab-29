@@ -1,242 +1,85 @@
 /**
- * Title: Lab 29: Alpha release
- * Description: 
+ * Title: Lab 29: Beta Release
+ * Description: Add more actual code, refactor, optimize, test
  * Author: Nick Galvez
  * Class: COMSC-210
  *
  */
 
 #include <iostream>
-#include <fstream>
-#include <chrono>
+#include <algorithm> // for sort(), find()
+#include <numeric>   // for accumulate()
 #include <vector>
-#include <algorithm>
-#include <set>
-#include <list>
-#include <iomanip>
-#include <thread>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <map>
+#include <array>
+#include "EnvironmentReadingParser.h"
+
 using namespace std;
 
-// https://stackoverflow.com/questions/158585/how-do-you-add-a-timed-delay-to-a-c-program
-using namespace std::this_thread; // sleep_for, sleep_until
-using namespace std::chrono;      // nanoseconds, system_clock, seconds
+/**
+ * EnvironmentReading struct
+ *
+ * @param time_t time
+ * @param double temperature
+ * @param double soilMoisture
+ * @param double battery
+ */
 
-// const int SZ = 20000, COLS = 3, ROWS = 4, TESTS = 4;
-const int STRUCTURES = 3;
-const int ROWS = 4, COLS = 3, RUNS = 15;
-const int W1 = 10;
 
-float results[RUNS][ROWS][COLS];
-string cd;
-vector<string> data_vector;
-list<string> data_list;
-set<string> data_set;
 
-void test_read(int count)
+/**
+ My project will simulate a weather sensor for a garden, by allowing input of weather data for a given day, and simulating sensor reading for 3 sensors:
+
+1. Battery charge
+2. Soil moisture
+3. Temperature
+
+*/
+
+
+/**
+ * Prints the time in a human-readable format.
+ *
+ * @param time_t time
+ * @param string format
+ * @return string
+ */
+string printTime(const time_t &time, const string &format = "%Y-%m-%d %H:%M:%S")
 {
-    // testing for READ operations
-    for (int i = 0; i < STRUCTURES; i++)
-    {
-        ifstream fin("codes.txt");
-        auto start = chrono::high_resolution_clock::now();
-
-        switch (i)
-        {
-        case 0:
-        { // read into a vector
-            while (fin >> cd)
-            {
-
-                data_vector.push_back(cd);
-            }
-
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][0][i] = duration.count();
-
-            break;
-        }
-        case 1:
-        { // read into a list
-            while (fin >> cd)
-                data_list.push_back(cd);
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][0][i] = duration.count();
-            break;
-        }
-        case 2:
-        { // read into a set
-            while (fin >> cd)
-                data_set.insert(cd);
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][0][i] = duration.count();
-            break;
-        }
-        }
-        fin.close();
-    }
+    char buffer[80];
+    strftime(buffer, 80, format.c_str(), localtime(&time));
+    return buffer;
 }
 
-void test_sort(int count)
-{
-    // testing for SORT operations
-    for (int i = 0; i < STRUCTURES; i++)
-    {
-        auto start = chrono::high_resolution_clock::now();
-        switch (i)
-        {
-        case 0:
-        { // sort a vector
-            sort(data_vector.begin(), data_vector.end());
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][1][i] = duration.count();
-            break;
-        }
-        case 1:
-        { // sort a list
-            data_list.sort();
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][1][i] = duration.count();
-            break;
-        }
-        case 2:
-        { // can't sort a set, so set to -1
-            results[count][1][i] = -1;
-            break;
-        }
-        }
-    }
-}
-void test_insert(int count)
-{
-    // testing for INSERT operations
-    for (int i = 0; i < STRUCTURES; i++)
-    {
-        int ind_v = data_vector.size() / 2;
-        int ind_l = data_list.size() / 2;
-        auto start = chrono::high_resolution_clock::now();
-        switch (i)
-        {
-        case 0:
-        { // insert into a vector
-            data_vector.insert(data_vector.begin() + ind_v, "TESTCODE");
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][2][i] = duration.count();
-            break;
-        }
-        case 1:
-        { // insert into a list
-            auto it = data_list.begin();
-            advance(it, ind_l);
-            data_list.insert(it, "TESTCODE");
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][2][i] = duration.count();
-            break;
-        }
-        case 2:
-        { // insert into a set
-            data_set.insert("TESTCODE");
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][2][i] = duration.count();
-            break;
-        }
-        }
-    }
-}
-
-void test_delete(int count)
-{
-    // testing for DELETE operations
-    for (int i = 0; i < STRUCTURES; i++)
-    {
-        // select a target value in the vector
-        int ind = data_vector.size() / 2;
-        string target_v = data_vector[ind];
-
-        // select a target value in the list
-        auto it1 = data_list.begin();
-        advance(it1, ind);
-        string target_l = *it1;
-
-        // select a target value in the set
-        auto it2 = data_set.begin();
-        advance(it2, ind);
-        string target_s = *it2;
-
-        auto start = chrono::high_resolution_clock::now();
-        switch (i)
-        {
-        case 0:
-        { // delete by value from vector
-            data_vector.erase(remove(data_vector.begin(), data_vector.end(), target_v));
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][3][i] = duration.count();
-            break;
-        }
-        case 1:
-        { // delete by value from list
-            data_list.remove(target_l);
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][3][i] = duration.count();
-            break;
-        }
-        case 2:
-        { // delete by value from set
-            data_set.erase(target_s);
-            auto end = chrono::high_resolution_clock::now();
-            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-            results[count][3][i] = duration.count();
-            break;
-        }
-        }
-    }
-}
 
 int main()
 {
+    // Get a new array of EnvironmentReading structs
+    // Test file should be in the repo under the src directory.
+    vector<EnvironmentReading> historicalData;
 
-    // try running 15 times
-    for (int i = 0; i < RUNS; i++)
-    {
-        test_read(i);
-        test_sort(i);
-        test_insert(i);
-        test_delete(i);
-    }
+    // I will use a `std::map` of `std::array` to store the 3 datapoints, as well as the timestamp:
+    map<time_t, array<double, 3>> readings;
 
-    // get the average of the 15 runs
-    for (int i = 0; i < ROWS; i++)
+    // Read the file. The API is not working, my key hasn't been activated yet so I tried generating some test data with chatgpt.
+    int success = EnvironmentReadingParser::parseWeatherData("../all_weather_data.json", historicalData);
+    
+    // If the file was read successfully, add the data to the map
+    if (success)
     {
-        for (int j = 0; j < COLS; j++)
+        for (auto &reading : historicalData)
         {
-            int sum = 0;
-            for (int k = 0; k < RUNS; k++)
-            {
-                sum += results[k][i][j];
-            }
-            results[0][i][j] = sum / RUNS; // set tje first item to the average
+            array<double, 3> data = {reading.time, reading.temperature, reading.uvi};
+            readings[reading.time] = data;
         }
     }
-
-    string labels[] = {"Read", "Sort", "Insert", "Delete"};
-    cout << setw(W1) << "Operation" << setw(W1) << "Vector" << setw(W1) << "List"
-         << setw(W1) << "Set" << endl;
-    for (int i = 0; i < 4; i++)
+    else
     {
-        cout << setw(W1) << labels[i];
-        for (int j = 0; j < COLS; j++)
-            cout << setw(W1) << setprecision(3) << results[0][i][j];
-        cout << endl;
+        // error and exit
+        cout << "Error reading file." << endl;
+        return 1;
     }
-
-    return 0;
 }

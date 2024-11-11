@@ -12,7 +12,7 @@
             "externalConsole": false,
             "MIMode": "lldb",
             "preLaunchTask": "Build Main",
-            "targetArchitecture": "ARM64",
+            "targetArchitecture": "arm64",
             "logging": {
                 "moduleLoad": false,
                 "programOutput": true,
