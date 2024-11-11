@@ -12,6 +12,7 @@
 #include <vector>
 #include <ctime>
 #include "json.hpp"
+#include "Time.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -20,7 +21,7 @@ using namespace std;
 struct EnvironmentReading
 {
     string day;
-    double time;
+    time_t time;
     double temperature;
     double uvi;
     ~EnvironmentReading() {}
@@ -58,11 +59,16 @@ public:
                     // Extract and assign values
                     
                     reading.temperature = hour["temp"].get<double>(); // Temperature in Kelvin
-                    // store the time as a double
-                    reading.time = hour["dt"].get<double>();
+                    // store the time 
+                    reading.time = hour["dt"].get<time_t>(); // Time in seconds since epoch
                     reading.uvi = hour.value("uvi", 0.0);             // UV index (use 0.0 if not available)
-                    // store the day as a string
-                    reading.day = day["day"].get<string>();
+                    // store the day from dt a string
+                    time_t tempTime = hour["dt"].get<time_t>();
+                    
+                    reading.day = printTime(tempTime, "%Y-%m-%d");
+
+                    reading.day = reading.day.substr(0, 10);    
+
                     // that will be used as the key. Technically, we don't need it for every record. TODO: refactor this.
                     readings.push_back(reading);
                 }
