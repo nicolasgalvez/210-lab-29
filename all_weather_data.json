@@ -5,31 +5,30 @@
     "timezone": "America/Los_Angeles",
     "timezone_offset": -28800,
     "hourly": [
-      {
-        "dt": 1667697600,
-        "temp": 288.92,
-        "uvi": 0.5
-      },
-      {
-        "dt": 1667701200,
-        "temp": 287.15,
-        "uvi": 0.0
-      },
-      {
-        "dt": 1667704800,
-        "temp": 285.87,
-        "uvi": 0.1
-      },
-      {
-        "dt": 1667708400,
-        "temp": 284.52,
-        "uvi": 0.0
-      },
-      {
-        "dt": 1667712000,
-        "temp": 283.65,
-        "uvi": 0.0
-      }
+      { "dt": 1667697600, "temp": 294.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667701200, "temp": 293.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667704800, "temp": 292.85, "uvi": 1.2, "light_intensity": 5000 },
+      { "dt": 1667708400, "temp": 295.25, "uvi": 4.5, "light_intensity": 15000 },
+      { "dt": 1667712000, "temp": 298.15, "uvi": 7.8, "light_intensity": 30000 },
+      { "dt": 1667715600, "temp": 300.35, "uvi": 9.5, "light_intensity": 50000 },
+      { "dt": 1667719200, "temp": 302.15, "uvi": 8.7, "light_intensity": 60000 },
+      { "dt": 1667722800, "temp": 303.15, "uvi": 6.2, "light_intensity": 45000 },
+      { "dt": 1667726400, "temp": 301.85, "uvi": 3.8, "light_intensity": 25000 },
+      { "dt": 1667730000, "temp": 299.65, "uvi": 1.0, "light_intensity": 10000 },
+      { "dt": 1667733600, "temp": 297.15, "uvi": 0.0, "light_intensity": 2000 },
+      { "dt": 1667737200, "temp": 295.35, "uvi": 0.0, "light_intensity": 500 },
+      { "dt": 1667740800, "temp": 293.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667744400, "temp": 291.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667748000, "temp": 290.65, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667751600, "temp": 289.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667755200, "temp": 288.95, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667758800, "temp": 288.55, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667762400, "temp": 288.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667766000, "temp": 287.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667769600, "temp": 287.55, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667773200, "temp": 287.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667776800, "temp": 286.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667780400, "temp": 286.65, "uvi": 0.0, "light_intensity": 0 }
     ]
   },
   {
@@ -38,31 +37,158 @@
     "timezone": "America/Los_Angeles",
     "timezone_offset": -28800,
     "hourly": [
-      {
-        "dt": 1667784000,
-        "temp": 289.15,
-        "uvi": 0.8
-      },
-      {
-        "dt": 1667787600,
-        "temp": 288.35,
-        "uvi": 0.3
-      },
-      {
-        "dt": 1667791200,
-        "temp": 287.15,
-        "uvi": 0.0
-      },
-      {
-        "dt": 1667794800,
-        "temp": 286.85,
-        "uvi": 0.0
-      },
-      {
-        "dt": 1667798400,
-        "temp": 285.65,
-        "uvi": 0.0
-      }
+      { "dt": 1667784000, "temp": 293.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667787600, "temp": 292.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667791200, "temp": 294.55, "uvi": 1.5, "light_intensity": 6000 },
+      { "dt": 1667794800, "temp": 296.75, "uvi": 5.2, "light_intensity": 18000 },
+      { "dt": 1667798400, "temp": 299.65, "uvi": 8.0, "light_intensity": 35000 },
+      { "dt": 1667802000, "temp": 301.45, "uvi": 9.8, "light_intensity": 55000 },
+      { "dt": 1667805600, "temp": 303.25, "uvi": 8.9, "light_intensity": 62000 },
+      { "dt": 1667809200, "temp": 304.15, "uvi": 6.7, "light_intensity": 48000 },
+      { "dt": 1667812800, "temp": 302.85, "uvi": 4.2, "light_intensity": 28000 },
+      { "dt": 1667816400, "temp": 300.75, "uvi": 1.5, "light_intensity": 12000 },
+      { "dt": 1667820000, "temp": 298.55, "uvi": 0.0, "light_intensity": 3000 },
+      { "dt": 1667823600, "temp": 296.35, "uvi": 0.0, "light_intensity": 800 },
+      { "dt": 1667827200, "temp": 294.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667830800, "temp": 292.75, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667834400, "temp": 291.35, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667838000, "temp": 290.45, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667841600, "temp": 289.65, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667845200, "temp": 289.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667848800, "temp": 288.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667852400, "temp": 288.55, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667856000, "temp": 288.25, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667859600, "temp": 288.05, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667863200, "temp": 287.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667866800, "temp": 287.65, "uvi": 0.0, "light_intensity": 0 }
+    ]
+  },
+  {
+    "lat": 37.9715,
+    "lon": -122.0308,
+    "timezone": "America/Los_Angeles",
+    "timezone_offset": -28800,
+    "hourly": [
+      { "dt": 1667784000, "temp": 293.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667787600, "temp": 292.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667791200, "temp": 294.55, "uvi": 1.5, "light_intensity": 6000 },
+      { "dt": 1667794800, "temp": 296.75, "uvi": 5.2, "light_intensity": 18000 },
+      { "dt": 1667798400, "temp": 299.65, "uvi": 8.0, "light_intensity": 35000 },
+      { "dt": 1667802000, "temp": 301.45, "uvi": 9.8, "light_intensity": 55000 },
+      { "dt": 1667805600, "temp": 303.25, "uvi": 8.9, "light_intensity": 62000 },
+      { "dt": 1667809200, "temp": 304.15, "uvi": 6.7, "light_intensity": 48000 },
+      { "dt": 1667812800, "temp": 302.85, "uvi": 4.2, "light_intensity": 28000 },
+      { "dt": 1667816400, "temp": 300.75, "uvi": 1.5, "light_intensity": 12000 },
+      { "dt": 1667820000, "temp": 298.55, "uvi": 0.0, "light_intensity": 3000 },
+      { "dt": 1667823600, "temp": 296.35, "uvi": 0.0, "light_intensity": 800 },
+      { "dt": 1667827200, "temp": 294.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667830800, "temp": 292.75, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667834400, "temp": 291.35, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667838000, "temp": 290.45, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667841600, "temp": 289.65, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667845200, "temp": 289.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667848800, "temp": 288.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667852400, "temp": 288.55, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667856000, "temp": 288.25, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667859600, "temp": 288.05, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667863200, "temp": 287.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667866800, "temp": 287.65, "uvi": 0.0, "light_intensity": 0 }
+    ]
+  },
+  {
+    "lat": 37.9715,
+    "lon": -122.0308,
+    "timezone": "America/Los_Angeles",
+    "timezone_offset": -28800,
+    "hourly": [
+      { "dt": 1667784000, "temp": 293.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667787600, "temp": 292.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667791200, "temp": 294.55, "uvi": 1.5, "light_intensity": 6300 },
+      { "dt": 1667794800, "temp": 296.75, "uvi": 5.2, "light_intensity": 19000 },
+      { "dt": 1667798400, "temp": 299.65, "uvi": 8.0, "light_intensity": 35000 },
+      { "dt": 1667802000, "temp": 301.45, "uvi": 9.8, "light_intensity": 55800 },
+      { "dt": 1667805600, "temp": 303.25, "uvi": 8.9, "light_intensity": 62000 },
+      { "dt": 1667809200, "temp": 304.15, "uvi": 6.7, "light_intensity": 48100 },
+      { "dt": 1667812800, "temp": 302.85, "uvi": 4.2, "light_intensity": 28000 },
+      { "dt": 1667816400, "temp": 300.75, "uvi": 1.5, "light_intensity": 12000 },
+      { "dt": 1667820000, "temp": 298.55, "uvi": 0.0, "light_intensity": 3000 },
+      { "dt": 1667823600, "temp": 296.35, "uvi": 0.0, "light_intensity": 800 },
+      { "dt": 1667827200, "temp": 294.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667830800, "temp": 292.75, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667834400, "temp": 291.35, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667838000, "temp": 290.45, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667841600, "temp": 289.65, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667845200, "temp": 289.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667848800, "temp": 288.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667852400, "temp": 288.55, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667856000, "temp": 288.25, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667859600, "temp": 288.05, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667863200, "temp": 287.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667866800, "temp": 287.65, "uvi": 0.0, "light_intensity": 0 }
+    ]
+  },
+  {
+    "lat": 37.9715,
+    "lon": -122.0308,
+    "timezone": "America/Los_Angeles",
+    "timezone_offset": -28800,
+    "hourly": [
+      { "dt": 1667784000, "temp": 293.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667787600, "temp": 292.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667791200, "temp": 294.55, "uvi": 1.5, "light_intensity": 6000 },
+      { "dt": 1667794800, "temp": 296.75, "uvi": 5.2, "light_intensity": 18000 },
+      { "dt": 1667798400, "temp": 299.65, "uvi": 8.0, "light_intensity": 35000 },
+      { "dt": 1667802000, "temp": 301.45, "uvi": 9.8, "light_intensity": 55000 },
+      { "dt": 1667805600, "temp": 303.25, "uvi": 8.9, "light_intensity": 62000 },
+      { "dt": 1667809200, "temp": 304.15, "uvi": 6.7, "light_intensity": 48000 },
+      { "dt": 1667812800, "temp": 302.85, "uvi": 4.2, "light_intensity": 28000 },
+      { "dt": 1667816400, "temp": 300.75, "uvi": 1.5, "light_intensity": 12000 },
+      { "dt": 1667820000, "temp": 298.55, "uvi": 0.0, "light_intensity": 3000 },
+      { "dt": 1667823600, "temp": 296.35, "uvi": 0.0, "light_intensity": 800 },
+      { "dt": 1667827200, "temp": 294.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667830800, "temp": 292.75, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667834400, "temp": 291.35, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667838000, "temp": 290.45, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667841600, "temp": 289.65, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667845200, "temp": 289.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667848800, "temp": 288.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667852400, "temp": 288.55, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667856000, "temp": 288.25, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667859600, "temp": 288.05, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667863200, "temp": 287.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667866800, "temp": 287.65, "uvi": 0.0, "light_intensity": 0 }
+    ]
+  },
+  {
+    "lat": 37.9715,
+    "lon": -122.0308,
+    "timezone": "America/Los_Angeles",
+    "timezone_offset": -28800,
+    "hourly": [
+      { "dt": 1667784000, "temp": 293.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667787600, "temp": 292.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667791200, "temp": 294.55, "uvi": 1.5, "light_intensity": 6000 },
+      { "dt": 1667794800, "temp": 296.75, "uvi": 5.2, "light_intensity": 18000 },
+      { "dt": 1667798400, "temp": 299.65, "uvi": 8.0, "light_intensity": 35000 },
+      { "dt": 1667802000, "temp": 301.45, "uvi": 9.8, "light_intensity": 55000 },
+      { "dt": 1667805600, "temp": 303.25, "uvi": 8.9, "light_intensity": 62000 },
+      { "dt": 1667809200, "temp": 304.15, "uvi": 6.7, "light_intensity": 48000 },
+      { "dt": 1667812800, "temp": 302.85, "uvi": 4.2, "light_intensity": 28000 },
+      { "dt": 1667816400, "temp": 300.75, "uvi": 1.5, "light_intensity": 12000 },
+      { "dt": 1667820000, "temp": 298.55, "uvi": 0.0, "light_intensity": 3000 },
+      { "dt": 1667823600, "temp": 296.35, "uvi": 0.0, "light_intensity": 800 },
+      { "dt": 1667827200, "temp": 294.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667830800, "temp": 292.75, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667834400, "temp": 291.35, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667838000, "temp": 290.45, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667841600, "temp": 289.65, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667845200, "temp": 289.15, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667848800, "temp": 288.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667852400, "temp": 288.55, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667856000, "temp": 288.25, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667859600, "temp": 288.05, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667863200, "temp": 287.85, "uvi": 0.0, "light_intensity": 0 },
+      { "dt": 1667866800, "temp": 287.65, "uvi": 0.0, "light_intensity": 0 }
     ]
   }
 ]

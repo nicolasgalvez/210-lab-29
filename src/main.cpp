@@ -167,9 +167,10 @@ int main()
             cout << "Time: " << printTime(time.first) << endl;
             cout << "Soil Moisture: " << time.second[0] << "%" << endl;
             cout << "Battery: " << time.second[1] << "%" << endl;
-            cout << "Temperature: " << time.second[2] << "°K" << endl;
+            cout << "Temperature: " << time.second[2] << "Degrees K" << endl;
             cout << endl;
         }
         cout << endl;
+    
     }
 }

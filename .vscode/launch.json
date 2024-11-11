@@ -8,7 +8,6 @@
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",
-            "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",
             "preLaunchTask": "Build Main",
@@ -18,6 +17,16 @@
                 "programOutput": true,
                 "engineLogging": false
             },
+            "environment": [
+                {
+                    "name": "LC_ALL",
+                    "value": "en_US.UTF-8"
+                },
+                {
+                    "name": "LANG",
+                    "value": "en_US.UTF-8"
+                }
+            ],
             "showDisplayString": false,
         },
         {
@@ -29,7 +38,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             // "targetArchitecture": "x86_64",
             "MIMode": "lldb",
             "preLaunchTask": "Build Tests",
