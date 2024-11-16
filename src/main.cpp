@@ -25,7 +25,9 @@ ostream &s(ostream &os)
     return os;
 }
 
-
+void printCar(Car &car) {
+    cout << "[" << car.getYear() << s << car.getMake() << s << car.getTransponder() << "] " << "🏎" << endl;
+}
 
 int main()
 {
@@ -35,7 +37,7 @@ int main()
     for (size_t i = 0; i < INITIAL_CARS; i++)
     {
         cars.push_front(Car());
-        cout << "[" << cars[i].getYear() << s << cars[i].getMake() << s << cars[i].getTransponder() << "] " << "🏎" << endl;
+        printCar(cars.front());
     }
     int time = 0;
     while (cars.size() > 0)
