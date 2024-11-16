@@ -12,7 +12,10 @@
 #include <EnvironmentReadingParser.h>
 #include "NG_Time.h"
 #include "Car.h"
+#include <locale>
 using namespace std;
+
+
 
 const int INITIAL_CARS = 2;
 
@@ -27,18 +30,35 @@ ostream &s(ostream &os)
 
 void printCar(Car &car)
 {
-    cout << "[" << car.getYear() << s << car.getMake() << s << car.getTransponder() << "] " << "🏎" << endl;
+    cout << "[" << car.getYear() << s << car.getMake() << s << car.getTransponder() << "] " << endl;
 }
-
+/**
+ * Print the queue of cars
+ * TODO: fix emojis, they are going beyond the end of the cars.
+ */
 void printQueue(deque<Car> &cars)
 {
+    // Set the locale to enable UTF-8 output. I guess this is why the vscode terminal doesn't display emojis.
+    locale::global(locale("en_US.UTF-8"));
+    wcout.imbue(locale());
+    // Not sure if this works on all terminal emulators.
+
     int iconOffset = 0x0;
     int iconStart = 0x1F695;
     for (size_t i = 0; i < cars.size(); i++)
     {
         printCar(cars[i]);
-        // print icon
     }
+    // for each car, print a car emoji starting from 0x1F695 and incrementing by 1
+    for (size_t i = 0; i < cars.size(); i++) {
+        wchar_t emoji = static_cast<wchar_t>(iconStart + iconOffset); // Calculate the Unicode emoji. Thanks to https://unicode.org/emoji/charts/full-emoji-list.html
+        wcout << emoji << L" "; 
+        iconOffset++; 
+        if (iconOffset > 0x1F6C0 - 0x1F695) { 
+            iconOffset = 0; // Reset the offset
+        }
+    }
+    cout << endl;
 }
 
 int main()
@@ -59,16 +79,18 @@ int main()
         cout << "Time: " << time << endl;
 
         // 55% probability that the car at the head of the line pays its toll and leaves the toll booth
-        if (rand() % 100 < 55)
+        if (arc4random() % 100 < 55)
         {
             cout << "Car at the head of the line paid its toll and left the toll booth." << endl;
             cars.pop_front();
             movement = true;
         }
-        if (rand() % 100 < 45)
+        if (arc4random() % 100 < 45)
         { // 45% probability that another car joins the line for the toll booth
-            cout << "Another car joined the line for the toll booth." << endl;
+            
             cars.push_back(Car());
+            cout << "A " << cars.back().getMake() << " joined the line for the toll booth." << endl;
+
             movement = true;
         }
         if (!movement)
