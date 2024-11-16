@@ -19,24 +19,53 @@ const int INITIAL_CARS = 2;
 /**
  * Just print a space
  */
-ostream& s(ostream& os) {
+ostream &s(ostream &os)
+{
     os << " ";
     return os;
 }
+
+
 
 int main()
 {
     deque<Car> cars;
 
-cout << "Initial Queue:" << endl;
+    cout << "Initial Queue:" << endl;
     for (size_t i = 0; i < INITIAL_CARS; i++)
     {
-        cars.push_back(Car());
+        cars.push_front(Car());
         cout << "[" << cars[i].getYear() << s << cars[i].getMake() << s << cars[i].getTransponder() << "] " << "🏎" << endl;
     }
-    
+    int time = 0;
+    while (cars.size() > 0)
+    {
+        bool movement = false;
+        time++;
+        cout << "Time: " << time << endl;
 
+        // 55% probability that the car at the head of the line pays its toll and leaves the toll booth
+        if (rand() % 100 < 55)
+        {
+            cout << "Car at the head of the line paid its toll and left the toll booth." << endl;
+            cars.pop_front();
+            movement = true;
+        }
+        if (rand() % 100 < 45)
+        { // 45% probability that another car joins the line for the toll booth
+            cout << "Another car joined the line for the toll booth." << endl;
+            cars.push_back(Car());
+            movement = true;
+        }
+        if (!movement)
+        {
+            cout << "It's a traffic jam! No cars moved." << endl;
+        }
+        cout << endl
+             << endl;
+    } 
 
+    cout << "All cars have left the toll booth." << endl;
 
-    
+    return 0;
 }
