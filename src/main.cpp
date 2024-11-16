@@ -15,8 +15,9 @@
 #include <string>
 #include <map>
 #include <array>
-#include "EnvironmentReadingParser.h"
-#include "Time.h"
+#include <EnvironmentReadingParser.h>
+#include "NG_Time.h"
+#include "Car.h"
 using namespace std;
 
 /**
