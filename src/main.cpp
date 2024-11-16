@@ -25,8 +25,20 @@ ostream &s(ostream &os)
     return os;
 }
 
-void printCar(Car &car) {
+void printCar(Car &car)
+{
     cout << "[" << car.getYear() << s << car.getMake() << s << car.getTransponder() << "] " << "🏎" << endl;
+}
+
+void printQueue(deque<Car> &cars)
+{
+    int iconOffset = 0x0;
+    int iconStart = 0x1F695;
+    for (size_t i = 0; i < cars.size(); i++)
+    {
+        printCar(cars[i]);
+        // print icon
+    }
 }
 
 int main()
@@ -63,9 +75,22 @@ int main()
         {
             cout << "It's a traffic jam! No cars moved." << endl;
         }
-        cout << endl
-             << endl;
-    } 
+
+
+        // Print the queue
+        cout << "Queue:" << endl;
+        if (cars.size() > 0)
+        {
+            
+            printQueue(cars);
+        }
+        else
+        {
+            cout << "EMPTY" << endl;
+        }
+
+        cout << endl;
+    }
 
     cout << "All cars have left the toll booth." << endl;
 
